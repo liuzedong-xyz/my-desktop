@@ -1,18 +1,52 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <div class="window">
+      <!-- <move-box>
+        <p>This is a qqq</p>
+      </move-box> -->
+      <button class="btn" @click="showBox"></button>
+    </div>
+    <div class="bottom-bar"></div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+// import moveBox from '@/components/moveBox';
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  methods: {
+    async showBox() {
+      const res = await this.$box('test');
+      console.log(res);
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .bottom-bar {
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+  }
+
+  .window {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
+}
+
+.btn {
+  width: 100px;
+  height: 100px;
+}
+
+</style>
